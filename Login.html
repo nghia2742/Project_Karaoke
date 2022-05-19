@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style_login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            DubaiK
+        </div>
+        <ul class="list">
+            <li class="list-item"><a href="/Home.html">Home</a></li>
+            <li class="list-item"><a href="#">Contact</a></li>
+            <li class="list-item"><a href="#">About</a></li>
+            <li class="list-item"><a href="#">Feedback</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="textGreeting">
+            <h1> WELCOME TO <br> 
+                <span>DUBAIK</span>
+            </h1>
+            <h3>BE CONFIDENT YOUR VOICE !!!</h3>
+        </div>
+        <form class="login" name="myForm" action="Main.html" onsubmit="return myFunction()">
+            <h1>Log in</h1>
+            <div class="form-text">
+                <label for="uname">Username:</label> 
+                <input type="text" name="uname" placeholder="Enter your username" required>
+            </div>
+            <div class="form-text"> 
+                <label for="password">Password:</label> 
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="submit">
+                <input onclick="check()" type="submit" value="Login">
+            </div>
+            <span> Do you have an account? Register <a href="">Here!</a></span>
+        </form>
+    </div>
+</body>
+</html>

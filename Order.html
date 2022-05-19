@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style_order.css">
+    <title>Order</title>
+</head>
+<body>
+    <div class="header">
+        <a target="_parent" href="/Main.html">
+            <img class="btn_back" src="https://img.icons8.com/external-simple-solid-edt.graphics/50/000000/external-Back-arrows-simple-solid-edt.graphics-3.png"/>
+        </a>
+        <h1> WELCOME TO DUBAIK</h1>
+    </div>
+    <div class="container">
+        <div class="block1">
+            <img class="pic_content" src="/pic_content.jpg">
+            <span> Room 1 </span>
+            <p>The detail information about this room, include: 1 table, 2 conditional airs, 
+                2 salon chairs, 4 speakers and 2 micros.</p>
+        </div>
+        <div class="block2">
+            <div class="block2--1">
+                <div class="item_info">
+                    <label for="name">Your name:</label>
+                    <input name="name" type="text">
+                    <br>
+                    <label for="phone">Your phone:</label>
+                    <input name="phone" type="text">
+                    <br>
+                    <label for="date">Date order:</label>
+                    <input name="date" type="date">
+                    <br>
+                    <label for="time">Time:</label>
+                    <input name="time" type="time">
+                    <br>
+                    <label for="number">Number of people:</label>
+                    <input name="number" list="people">
+                    <datalist id="people">
+                        <option value="1 person"></option>
+                        <option value="2 people"></option>
+                        <option value="3 people"></option>
+                        <option value="4 people"></option>
+                    </datalist>
+                    <br>
+                    <label for="textarea">Note</label>
+                    <textarea name = "textarea" cols="30" rows="5">Write here...</textarea>
+                </div>
+                
+            </div>
+            <div class="block2--2">
+                <a href="#" target="_blank" >
+                    <button class="btn_order">Order</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
