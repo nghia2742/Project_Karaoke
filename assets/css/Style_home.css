@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+:root {
+    --clr1: #3a92f0;
+    --clr2: #b67de1;
+    --clr3: #f872d9;
+}
+
+body {
+    min-height: 100vh;
+    height: 100%;
+    background: linear-gradient(90deg,var(--clr1),var(--clr2),var(--clr3));
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* NAV -------------------*/
+.nav {
+    display: flex;
+    margin-bottom: 50px;
+    padding: 8px 8px;
+    border-bottom: 1px solid rgba(247, 245, 245, 0.679);
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.nav .logo {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 30px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    background-color: rgb(103, 103, 227);
+    padding: 0 15px;
+    border-radius: 0 20px;
+}
+.nav .list {
+    display: flex;
+}
+.nav .list li {
+    margin-right: 40px;
+    list-style: none;
+    font-size: 16px;
+}
+
+.nav .list li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.list li:hover {
+    transition: ease 0.15s;
+    transform: translateY(-5px);
+}
+
+.list li:first-child {
+    font-weight: 800;
+}
+/* -----------------------*/
+/* Container------------- */
+.container {
+    text-align: center;
+    position: relative;
+    height: 45vh;
+}
+
+.container h1 {
+    margin-top: 120px;
+    font-size: 60px;
+}
+
+.container h4 {
+    margin-top: 40px;
+    font-size: 22px;
+    font-style: italic;
+}
+
+.container .text {
+    margin-top: 45px;
+    font-size: 16px;
+    background-color: rgb(89, 172, 244);
+    width: 100px;
+    border-radius: 20px;
+    padding: 14px 10px;
+    position: absolute;
+    left: 45%;
+    cursor: pointer;
+    animation: zoomInOut 1s infinite ease-in;
+}
+
+.text a {
+    text-decoration: none;
+}
+
+@keyframes zoomInOut {
+    0% {transform: translateY(0);}
+    25% {transform: translateY(-4px);}
+    50% {transform: translateY(-8px);}
+    75% {transform: translateY(-4px);}
+    100% {transform: translateY(0);}
+}
+
+/*  ---------------------*/
+/* footer -------------- */
+.footer {
+    box-sizing: border-box;
+    margin-top: 150px;
+    height: 220px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 34px;    
+}
+
+.list-name {
+    list-style: none;
+}
+
+.social-network {
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+.fa-brands + .fa-brands {
+    margin-left: 15px;
+}
+/* ----------------------- */

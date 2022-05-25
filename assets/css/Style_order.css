@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #333f;
+}
+
+:root {
+    --clr1: #3a92f0;
+    --clr2: #b67de1;
+    --clr3: #f872d9;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(90deg,var(--clr1),var(--clr2),var(--clr3));
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+/* header --------------------------------- */
+/* button back -------------------------- */
+.btn_back {
+    margin: 10px 0 0 10px;
+}
+/* -------------------------------------- */
+/* h1 ------------------------------------- */
+.header {
+    display: flex;
+}
+
+.header h1 {
+    color: #fff;
+    padding: 18px 0;
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+
+/* ---------------------------------------- */
+/* -------------------------------------- */
+/* Container -------------------------- */
+.container {
+    margin: 20px 150px 0 150px;
+    display: flex;
+}
+/* block 1------------------------------ */
+.block1 {
+    height: 80vh;
+    width: 110vh;
+    background-color: #fff;
+    border-right: 2px solid #333 ;
+    box-sizing: border-box;
+    line-height: 25px;
+}
+
+.block1-1 {
+    border-bottom: 1px dashed #333 ;
+    display: flex;
+    justify-content: center;
+}
+
+.pic_content {
+    width: 350px;
+    height: auto;
+    padding: 0 auto;
+}
+
+.block1 .room {
+    padding: 5px 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.block1 p {
+    padding: 0 15px;
+
+}
+
+/* --------------------------------------------- */
+/* block 2 ------------------------------------- */
+.block2 {
+    height: 80vh;
+    width: 70vh;
+    background-color: #fff;
+    position: relative;
+}
+.block2-1 {
+    padding: 20px;
+}
+
+.item_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.block2-2 {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #1c1d39;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_order {
+    border: none;
+    background-color: transparent;
+    padding: 10px 0;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+
+.item_info label {
+    min-width: 200px;
+}
+/* -------------------------------------- */
