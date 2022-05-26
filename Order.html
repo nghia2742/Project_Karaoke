@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="header">
-        <a target="_parent" href="/Main.html">
+        <a target="_parent" href="./Main.html">
             <img class="btn_back" src="https://img.icons8.com/external-simple-solid-edt.graphics/50/000000/external-Back-arrows-simple-solid-edt.graphics-3.png"/>
         </a>
         <h1> WELCOME TO DUBAIK</h1>
@@ -28,27 +28,42 @@
                 <div class="item_info">
                     <label for="name">Your name:</label>
                     <input name="name" type="text">
-                    <br>
+                    
                     <label for="phone">Your phone:</label>
                     <input name="phone" type="text">
-                    <br>
+                    
                     <label for="date">Date order:</label>
                     <input name="date" type="date">
-                    <br>
-                    <label for="time">Time:</label>
-                    <input name="time" type="time">
-                    <br>
-                    <label for="number">Number of people:</label>
-                    <input name="number" list="people">
+                    
+                    <div class="timer">
+                        <div class="time">Time in:</div>
+                        <input class="time-in" type="time">
+                    </div>
+                    
+                    <div class="timer">
+                        <div class="time">Time out:</div>
+                        <input class="time-out" type="time">
+                    </div>
+                    
+                    <div class="people">Number of people:
+                        <input list="people">
+                    </div>
+                    
                     <datalist id="people">
-                        <option value="1 person"></option>
-                        <option value="2 people"></option>
-                        <option value="3 people"></option>
-                        <option value="4 people"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
+                        <option value="8"></option>
+                        <option value="9"></option>
+                        <option value="10"></option>
                     </datalist>
-                    <br>
+                    
                     <label for="textarea">Note</label>
-                    <textarea name = "textarea" cols="30" rows="5">Write here...</textarea>
+                    <textarea name = "textarea" cols="30" rows="3" placeholder="Write something"></textarea>
                 </div>
                 
             </div>
