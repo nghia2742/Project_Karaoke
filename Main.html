@@ -27,14 +27,17 @@
         <!-- NORMAL ROOM -->
         <h1 class="kindRoom">Normal Room</h1>
         <div class="grid">
-            <div class="container">
+            <div id="contain" class="container">
                 <div class="item">
-                    <div class="title_room"> Room 1</div>
+                    <div class="title_room">Room 1</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Unavailable
                             Capacity: 4 people
+                            Price: 5$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -42,12 +45,15 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="title_room"> Room 2</div>
+                    <div class="title_room">Room 2</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 4 people
+                            Price: 5$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -56,24 +62,30 @@
                 </div>
         
                 <div class="item">
-                    <div class="title_room"> Room 3</div>
+                    <div class="title_room">Room 3</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 6 people
+                            Price: 10$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
                         </a>
                     </div>
                 </div><div class="item">
-                    <div class="title_room"> Room 4</div>
+                    <div class="title_room">Room 4</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 6 people
+                            Price: 10$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -81,12 +93,15 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="title_room"> Room 5</div>
+                    <div class="title_room">Room 5</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 8 people
+                            Price: 15$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -94,26 +109,15 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="title_room"> Room 6</div>
+                    <div class="title_room">Room 6</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 8 people
-                        </div>
-                        <a href="Order.html" target="_self" >
-                            <button class="btn">Order</button>
-                        </a>
-                    </div>
-                </div>
-        
-                <div class="item">
-                    <div class="title_room"> Room 7</div>
-                    <div class="content">
-                        <img class="pic_content" src="./assets/image/pic_content.jpg">
-                        <div class="info">
-                            Status: Empty
-                            Capacity: 8 people
+                            Price: 15$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -122,31 +126,64 @@
                 </div>
         
                 <div class="item">
-                    <div class="title_room"> Room 8</div>
+                    <div class="title_room">Room 7</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 8 people
+                            Price: 15$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
                         </a>
+                    </div>
+                </div>
+        
+                <div class="item">
+                    <div class="title_room">Room 8</div>
+                    <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <img class="pic_content" src="./assets/image/pic_content.jpg">
+                        <div class="info">
+                            Status: Available
+                            Capacity: 8 people
+                            Price: 15$ an hour
+                        </div>
+                        <a href="Order.html" target="_self" >
+                            <button class="btn">Order</button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Btn add room -->
+                <div class="item item--add">
+                    <div class="title_room">Add room</div>
+                    <div onclick="addRoom()" class="content">
+                        <i class="fa-solid fa-plus"></i>
                     </div>
                 </div>
             </div>
+
+
         </div>
         <!-- VIP ROOM -->
         <h1 class="kindRoom">VIP Room</h1>
         <div class="grid">
-            <div class="container">
+            <div id="containVIP" class="container">
                 <div class="item">
-                    <div class="title_room"> Room 9</div>
+                    <div class="title_room"> Room VIP 1</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 10 people
+                            Price: 25$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -154,12 +191,15 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="title_room"> Room 10</div>
+                    <div class="title_room">Room VIP 2</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 10 people
+                            Price: 25$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
@@ -168,30 +208,45 @@
                 </div>
         
                 <div class="item">
-                    <div class="title_room"> Room 11</div>
+                    <div class="title_room">Room VIP 3</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 10 people
+                            Price: 25$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
                         </a>
                     </div>
                 </div><div class="item">
-                    <div class="title_room"> Room 12</div>
+                    <div class="title_room">Room VIP 4</div>
                     <div class="content">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <img class="pic_content" src="./assets/image/pic_content.jpg">
                         <div class="info">
-                            Status: Empty
+                            Status: Available
                             Capacity: 10 people
+                            Price: 25$ an hour
                         </div>
                         <a href="Order.html" target="_self" >
                             <button class="btn">Order</button>
                         </a>
                     </div>
                 </div>
+
+                <!-- Btn add room -->
+                <div class="item item--add">
+                    <div class="title_room">Add room</div>
+                    <div onclick="addRoomVIP()" class="content">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -211,4 +266,5 @@
         <i class="fa-brands fa-skype"></i>
     </div>
 </footer>
+<script src="./assets/js/Main.js"></script>
 </html>

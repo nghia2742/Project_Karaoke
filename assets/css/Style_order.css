@@ -120,4 +120,28 @@ body {
 .item_info label {
     min-width: 200px;
 }
+
+.item_info input {
+    margin-bottom: 10px;
+}
+
+.people input {
+    width: 40px;
+}
+
+.timer {
+    display: flex;
+}
+
+.timer .time {
+    min-width: 80px;
+}
+
+textarea {
+    resize: none;
+    padding-top: 8px;
+    padding-left: 8px;
+}
+
+
 /* -------------------------------------- */
