@@ -13,10 +13,10 @@ if ( localStorage.getItem('listRoom') === null ) {
 function addRoom() {
     var noRoom = room.length + 1;
     const div = document.createElement('div');
-    div.innerHTML = `<div class="item">
+    div.innerHTML = `<div class="item" id="idRoom">
                         <div class="title_room"> Room ${noRoom++}</div>
                         <div class="content">
-                            <i id="trashCan" class="fa-solid fa-trash-can"></i>
+                            <i id="trashCan1" class="fa-solid fa-trash-can"></i>
                             <i class="fa-solid fa-pen-to-square"></i>
                             <img class="pic_content" src="./assets/image/pic_content.jpg">
                             <div class="info">
@@ -36,6 +36,7 @@ function addRoom() {
     str = div.innerHTML;
     room.push(str);
     localStorage.setItem('listRoom',JSON.stringify(room));
+    window.location.reload();
 }
 
 
@@ -49,10 +50,10 @@ if ( localStorage.getItem('listRoomVIP') === null ) {
 function addRoomVIP() {
     var noRoomVIP = roomVIP.length + 1;
     const div = document.createElement('div');
-    div.innerHTML = `<div class="item">
+    div.innerHTML = `<div class="item" id="idRoomVIP">
                         <div class="title_room"> Room VIP ${noRoomVIP++}</div>
                         <div class="content">
-                            <i id="trashCan" class="fa-solid fa-trash-can"></i>
+                            <i id="trashCan2" class="fa-solid fa-trash-can"></i>
                             <i class="fa-solid fa-pen-to-square"></i>
                             <img class="pic_content" src="./assets/image/pic_content.jpg">
                             <div class="info">
@@ -72,6 +73,7 @@ function addRoomVIP() {
     str = div.innerHTML;
     roomVIP.push(str);
     localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP));
+    window.location.reload();
 }
 
 
@@ -96,26 +98,25 @@ function loadDataRoom() {
         }
     }
 }
-
 loadDataRoom();
-// localStorage.setItem('conditionLoad','true');
-// if (localStorage.getItem('conditionLoad').localeCompare('true') == 0) {
-//     loadDataRoom();
-//     localStorage.setItem('conditionLoad','false');
-// }
-
-
 // Delete a room -------------------------------------------------
 function deleteRoom() {
-    var id_trashCan = document.querySelectorAll("#trashCan");
-    var cls_item = document.querySelectorAll(".item");
-
-    for (let i = 0; i < id_trashCan.length; i++) {
-        id_trashCan[i].addEventListener("click",function() {
+    var arrayRoom = JSON.parse(localStorage.getItem('listRoom'));
+    var id_item = document.querySelectorAll('#idRoom');
+    var id_trashCan1 = document.querySelectorAll('#trashCan1');
+    for (let i = 0; i < id_trashCan1.length; i++) {
+        id_trashCan1[i].addEventListener("click",function() {
             if (confirm("This action will be delete a room !!!")) {
-                id_contain.removeChild(cls_item[i]);
-                localStorage.removeItem('room'+String(i+1));
-                console.log("Delete successfully!");
+                for (let e = 0; e < arrayRoom.length; e++) {
+                    if ( arrayRoom[e] === arrayRoom[i]) {
+                        id_item[i].remove();
+                        arrayRoom.splice(e, 1); 
+                        localStorage.setItem('listRoom',JSON.stringify(arrayRoom));
+                        window.location.reload();
+                        alert('Delete successfully!');
+                    }
+                }
+                console.log(arrayRoom);
             } else {
                 console.log("Canceled");
             }
@@ -125,3 +126,5 @@ function deleteRoom() {
 
 deleteRoom();
 
+
+ 
