@@ -1,8 +1,10 @@
 var id_contain = document.getElementById('contain');
 var id_containVIP = document.getElementById('containVIP');
-var roomVIP = [];
-
-
+var objectInfo = {
+    status: 'Available',
+    capacity:6,
+    price: 5
+};
 // ADD NORMAL ROOM
 if ( localStorage.getItem('listRoom') === null ) {
     var room = [];
@@ -12,17 +14,41 @@ if ( localStorage.getItem('listRoom') === null ) {
 
 function addRoom() {
     var noRoom = room.length + 1;
+    
     const div = document.createElement('div');
     div.innerHTML = `<div class="item" id="idRoom">
                         <div class="title_room"> Room ${noRoom++}</div>
                         <div class="content">
                             <i id="trashCan1" class="fa-solid fa-trash-can"></i>
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i id="edit1" class="fa-solid fa-pen-to-square"></i>
+                            <div id="ef1" class="editFrame"> 
+                                <div class="titleEdit">
+                                    <h2>Edit room</h2>
+                                    <i id = "closeEdit" class="fa-solid fa-xmark"></i>
+                                </div>
+                                <div class="containEdit">
+                                    <div class="contentEdit"> Status:
+                                        <div class="radioEdit">
+                                            <div>
+                                                <input name="radioStatus" id="idS1" type="radio" value = "Available" checked> 
+                                                <label for="available">Available</label>
+                                            </div>
+                                            <div>
+                                                <input name="radioStatus" id="idS2" type="radio" value = "Available">
+                                                <label for="unavailable">Unavailable</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contentEdit">Capacity: <input id="idC" type="text" autocomplete="off"> people</div>
+                                    <div class="contentEdit">Price: <input id="idP" type="text" autocomplete="off">$ an hour</div>
+                                </div>
+                                <button class="btnEdit">Finish</button>
+                            </div>
                             <img class="pic_content" src="./assets/image/pic_content.jpg">
                             <div class="info">
-                                Status: Empty
-                                Capacity: 6 people
-                                Price: 5$ an hour
+                                <div class = "info1">Status: ${objectInfo.status}</div>
+                                <div class = "info2">Capacity: ${objectInfo.capacity} people</div>
+                                <div class = "info3">Price: ${objectInfo.price}$ an hour</div>
                             </div>
                             <a href="Order.html" target="_self" >
                                 <button class="btn">Order</button>
@@ -32,15 +58,16 @@ function addRoom() {
     // Press to show a room on screen
     id_contain.appendChild(div);
     // Save a room into localStorage
-    var str = '';
-    str = div.innerHTML;
+    var str = div.innerHTML;
     room.push(str);
     localStorage.setItem('listRoom',JSON.stringify(room));
+    localStorage.setItem('listInfo',JSON.stringify(objectInfo));
     window.location.reload();
 }
 
 
-// ADD VIP ROOM
+
+// ADD VIP ROOM -----------------------------------------------------------
 if ( localStorage.getItem('listRoomVIP') === null ) {
     var roomVIP = [];
 }else{
@@ -123,8 +150,31 @@ function deleteRoom() {
         })
     }
 }
-
 deleteRoom();
 
+//Edit room
+function editRoom() {
+    var id_edit1 = document.querySelectorAll('#edit1');
+    var id_editFrame1 = document.querySelectorAll('#ef1');
+    var id_closeEdit = document.querySelectorAll('#closeEdit');
 
+    for (let i = 0; i < id_edit1.length; i++) {
+        id_edit1[i].addEventListener('click', function() {
+            id_editFrame1[i].classList.remove('active');
+            id_editFrame1[i].classList.add('active');
+            id_closeEdit[i].addEventListener('click', function() {
+                id_editFrame1[i].classList.remove('active');
+            });
+            // var radio_status = document.getElementByName('radioStatus');
+            // var len = radio_status.length;
+            // for (var i = 0; i < len; i++) {
+            //     if (radio_status[i].checked) {
+            //       alert(radio_status[i].value);
+            //       break;
+            //     }
+            //   }
+        });
+    }
+}
+editRoom();
  

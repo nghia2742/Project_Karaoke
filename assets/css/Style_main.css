@@ -165,6 +165,10 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
     padding: 6px;
+    height: 10px;
+}
+.info1, .info2, .info3 {
+    color: #000;
 }
 
 .btn {
@@ -215,5 +219,81 @@ body {
     margin-left: 15px;
 }
 /* ------------------------------ */
+/* Edit frame --------------------- */
+.editFrame {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 350px;
+    width: 350px;
+    background-color: #fff;
+    z-index: 1;
+    visibility: hidden;
+    box-sizing: border-box;
+    padding: 30px;
+    border: 2px solid #000;
+}
 
+.titleEdit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleEdit h2 {
+    color: #000;
+}
+
+.fa-xmark {
+    color: #000;
+    font-size: 30px;
+    cursor: pointer;
+}
+/* ContainEdit----------------------------- */
+.containEdit {
+    margin-top: 25px;
+    line-height: 31px;
+}
+
+.contentEdit {
+    color: #000;
+    font-size: 22px;
+}
+.radioEdit {
+    margin-left: 80px;
+}
+
+.containEdit #idP {
+    margin-left: 32px;
+}
+
+.containEdit input {
+    color: #000;
+    font-size: 18px;
+    width: 60px;
+}
+
+.contentEdit label{
+    color: #000;
+}
+
+.btnEdit{
+    width: 100%;
+    color: #fff;
+    margin-top: 15%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #60adff;
+    cursor: pointer;
+}
+
+.btnEdit:hover {
+    opacity: 0.8;
+}
+/* Active class ----------------------------*/
+.active {
+    visibility: visible;
+}
+/* -------------------------------------- */
 
