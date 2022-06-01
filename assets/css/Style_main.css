@@ -252,7 +252,7 @@ body {
 /* ContainEdit----------------------------- */
 .containEdit {
     margin-top: 25px;
-    line-height: 31px;
+    line-height: 25px;
 }
 
 .contentEdit {
@@ -264,7 +264,8 @@ body {
 }
 
 .containEdit #idP {
-    margin-left: 32px;
+    margin-top: 8px;
+    margin-left: 33px;
 }
 
 .containEdit input {
@@ -277,7 +278,7 @@ body {
     color: #000;
 }
 
-.btnEdit{
+.btnEdit input{
     width: 100%;
     color: #fff;
     margin-top: 15%;
