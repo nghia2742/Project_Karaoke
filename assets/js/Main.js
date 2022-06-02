@@ -1,11 +1,6 @@
 var id_contain = document.getElementById('contain');
 var id_containVIP = document.getElementById('containVIP');
-var info = {
-    room: 1,
-    status: "Available",
-    capacity: 6,
-    price: 5
-}
+
 // ADD NORMAL ROOM
 function addRoom() {
     if ( localStorage.getItem('listRoom') === null ) {
@@ -13,60 +8,58 @@ function addRoom() {
     }else{
         var room = JSON.parse(localStorage.getItem('listRoom'));
     }
-    var noRoom = room.length + 1;
-    info.room = noRoom;
-    const div = document.createElement('div');
-    div.innerHTML = `<div class="item" id="idRoom">
-                        <div class="title_room"> Room ${noRoom++}</div>
-                        <div class="content">
-                            <i id="trashCan1" class="fa-solid fa-trash-can"></i>
-                            <i id="edit1" class="fa-solid fa-pen-to-square"></i>
-                            <div id="ef1" class="editFrame"> 
-                                <div class="titleEdit">
-                                    <h2>Edit room</h2>
-                                    <i id = "closeEdit" class="fa-solid fa-xmark"></i>
-                                </div>
-                                <form id="formEdit">
-                                    <div class="contentEdit">RoomID: R0${noRoom} </div>
-                                    <div class="containEdit">
-                                        <div class="contentEdit"> Status:
-                                            <div class="radioEdit">
-                                                <div>
-                                                    <input name="radioStatus" id="idS1" type="radio" value = "Available" checked> 
-                                                    <label for="available">Available</label>
-                                                </div>
-                                                <div>
-                                                    <input name="radioStatus" id="idS2" type="radio" value = "Available">
-                                                    <label for="unavailable">Unavailable</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="contentEdit">Capacity: <input id="idC" type="text" autocomplete="off"> people</div>
-                                        <div class="contentEdit">Price: <input id="idP" type="text" autocomplete="off">$ an hour</div>
-                                    </div>
-                                    <div class="btnEdit"> <input type="submit" value="Finish"></div>
-                                </form>
-                            </div>
-                            <img class="pic_content" src="./assets/image/pic_content.jpg">
-                            <div class="info">
-                                <div class = "info1">Status: ${info.status}</div>
-                                <div class = "info2">Capacity: ${info.capacity} people</div>
-                                <div class = "info3">Price: ${info.price}$ an hour</div>
-                            </div>
-                            <a href="Order.html" target="_self" >
-                                <button class="btn">Order</button>
-                            </a>
-                        </div>
-                    </div>`
-    // Press to show a room on screen
-    id_contain.appendChild(div);
-    // Save a room into localStorage
-    var str = div.innerHTML;
-    room.push(str);
-    localStorage.setItem('listRoom',JSON.stringify(room));
-    localStorage.setItem('infoRoom',JSON.stringify(info));
-    // window.location.reload();
+    var class_info = document.getElementsByClassName('info');
     
+    if (confirm("Create a new room, right!?")) {
+        var noRoom = prompt('Enter number room:');
+        var status = prompt('Status:');
+        var capacity = prompt('Capacity')
+        var price = prompt('Price:')
+        var index = class_info.length;
+
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="item normalRoom">
+                            <div class="title_room"> Room ${noRoom}</div>
+                            <div class="content">
+                                <i id="trashCan1" class="fa-solid fa-trash-can"></i>
+                                <i id="edit1" class="fa-solid fa-pen-to-square"></i>
+                                <div id="ef1" class="editFrame"> 
+                                    <div class="titleEdit">
+                                        <h2>Edit room</h2>
+                                        <i id = "closeEdit" class="fa-solid fa-xmark"></i>
+                                    </div>
+                                    <div id="formEdit">
+                                        <div class="containEdit">
+                                            <div class="contentEdit">RoomID: R0${noRoom} </div>
+                                            <div class="contentEdit">Status: <input id="idS" type="text" autocomplete="off"></div>
+                                            <div class="contentEdit">Capacity: <input id="idC" type="text" autocomplete="off"> people</div>
+                                            <div class="contentEdit">Price: <input id="idP" type="text" autocomplete="off">$ an hour</div>
+                                        </div>
+                                        <button onclick="changeInfo()" id="myBtnEdit" class="btnEdit">Finish</button>
+                                    </div>
+                                </div>
+                                <img class="pic_content" src="./assets/image/pic_content.jpg">
+                                <div class="info">
+                                    <div class = "info1">Status: ${status}</div>
+                                    <div class = "info2">Capacity: ${capacity} people</div>
+                                    <div class = "info3">Price: ${price}$ an hour</div>
+                                    <div id = "index">${index}</div>
+                                </div>
+                                <a href="Order.html" target="_self" >
+                                    <button class="btn">Order</button>
+                                </a>
+                            </div>
+                        </div>`
+        // Press to show a room on screen
+        id_contain.appendChild(div);
+        // Save a room into localStorage
+        var str = div.innerHTML;
+        room.push(str);
+        localStorage.setItem('listRoom',JSON.stringify(room));
+        window.location.reload();
+    } else {
+        alert("Canceled");
+    }
 }
 
 
@@ -160,7 +153,7 @@ function editRoom() {
     var id_edit1 = document.querySelectorAll('#edit1');
     var id_editFrame1 = document.querySelectorAll('#ef1');
     var id_closeEdit = document.querySelectorAll('#closeEdit');
-
+    var id_myBtnEdit = document.querySelectorAll('#myBtnEdit');
     for (let i = 0; i < id_edit1.length; i++) {
         id_edit1[i].addEventListener('click', function() {
             id_editFrame1[i].classList.remove('active');
@@ -168,28 +161,30 @@ function editRoom() {
             id_closeEdit[i].addEventListener('click', function() {
                 id_editFrame1[i].classList.remove('active');
             });
+            id_myBtnEdit[i].addEventListener('click', function() {
+                id_editFrame1[i].classList.remove('active');
+            });
         });
     }
+    
 }
 editRoom();
 
 function changeInfo() {
     var cap = document.getElementById('idC').value;
     var pri = document.getElementById('idP').value;
-    var ele = document.getElementsByName('radioStatus');
-    var sta = "";         
-    for(i = 0; i < ele.length; i++) {
-        if(ele[i].checked)
-            sta = ele[i].value;
-    }
+    var sta = document.getElementById('idS').value; 
+    var class_info = document.getElementsByClassName('info');
+    var str = `Status: ${sta}
+            Capacity: ${cap} people
+            Price: ${pri}$ an hour`
+    var id_index = document.querySelector('#index');
+    console.log(id_index.innerText)
 
-    var newInfo = {
-        room: 1,
-        status: sta,
-        capacity: cap,
-        price: pri
+    var id_myBtnEdit = document.querySelectorAll('#myBtnEdit');
+    for (let i = 0; i < id_myBtnEdit.length; i++) {
+        id_myBtnEdit[i].addEventListener("click",function() {   
+            console.log(i);
+        })
     }
-    info = newInfo;
 }
-
-
