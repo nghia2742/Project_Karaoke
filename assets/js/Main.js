@@ -18,7 +18,7 @@ function addRoom() {
         var index = class_info.length;
 
         const div = document.createElement('div');
-        div.innerHTML = `<div class="item normalRoom">
+        div.innerHTML = `<div id="idRoom" class="item normalRoom">
                             <div class="title_room"> Room ${noRoom}</div>
                             <div class="content">
                                 <i id="trashCan1" class="fa-solid fa-trash-can"></i>
