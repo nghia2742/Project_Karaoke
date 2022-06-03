@@ -7,9 +7,8 @@ if ( localStorage.getItem('listRoom') === null ) {
     var room = JSON.parse(localStorage.getItem('listRoom'));
 }
 
-// ADD NORMAL ROOM
+// ADD NORMAL ROOM ---------------------------------------------------------
 function addRoom() {
-    
     if (confirm("Create a new room, right!?")) {
         var noRoom = prompt('Enter number room:');
         var status = prompt('Status:');
@@ -17,18 +16,16 @@ function addRoom() {
         var price = prompt('Price:')
         
         const div = document.createElement('div');
-        div.innerHTML = `<div class="item normalRoom">
+        div.innerHTML = `<div class="item">
                             <div class="title_room"> Room ${noRoom}</div>
                             <div class="content">
-                                <i class="fa-solid fa-trash-can"></i>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                
+                                <i class="fa-solid fa-trash-can trashCan"></i>
+                                <i class="fa-solid fa-pen-to-square edit"></i>
                                 <img class="pic_content" src="./assets/image/pic_content.jpg">
                                 <div class="info"">
                                     <div class = "info1">Status: ${status}</div>
                                     <div class = "info2">Capacity: ${capacity} people</div>
                                     <div class = "info3">Price: ${price}$ an hour</div>
-                                    
                                 </div>
                                 <a href="Order.html" target="_self" >
                                     <button class="btn">Order</button>
@@ -56,32 +53,40 @@ if ( localStorage.getItem('listRoomVIP') === null ) {
 }
 
 function addRoomVIP() {
-    var noRoomVIP = roomVIP.length + 1;
-    const div = document.createElement('div');
-    div.innerHTML = `<div class="item" id="idRoomVIP">
-                        <div class="title_room"> Room VIP ${noRoomVIP++}</div>
-                        <div class="content">
-                            <i id="trashCan2" class="fa-solid fa-trash-can"></i>
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            <img class="pic_content" src="./assets/image/pic_content.jpg">
-                            <div class="info">
-                                Status: Empty
-                                Capacity: 10 people
-                                Price: 25$ an hour
+    if (confirm("Create a new room, right!?")) {
+        var noRoomVIP = prompt('Enter number room:');
+        var status = prompt('Status:');
+        var capacity = prompt('Capacity')
+        var price = prompt('Price:')
+        
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="item">
+                            <div class="title_room"> Room VIP ${noRoomVIP}</div>
+                            <div class="content">
+                                <i class="fa-solid fa-trash-can trashCanVIP"></i>
+                                <i class="fa-solid fa-pen-to-square editVIP"></i>
+                                <img class="pic_content" src="./assets/image/pic_content.jpg">
+                                <div class="info"">
+                                    <div class = "info1">Status: ${status}</div>
+                                    <div class = "info2">Capacity: ${capacity} people</div>
+                                    <div class = "info3">Price: ${price}$ an hour</div>
+                                </div>
+                                <a href="Order.html" target="_self" >
+                                    <button class="btn">Order</button>
+                                </a>
                             </div>
-                            <a href="Order.html" target="_self" >
-                                <button class="btn">Order</button>
-                            </a>
-                        </div>
-                    </div>`
-    // Press to show a room on screen
-    id_containVIP.appendChild(div);
-    // Save a room into localStorage
-    var str = '';
-    str = div.innerHTML;
-    roomVIP.push(str);
-    localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP));
-    window.location.reload();
+                        </div>`
+        // Press to show a room on screen
+        id_containVIP.appendChild(div);
+        // Save a room into localStorage
+        var str = '';
+        str = div.innerHTML;
+        roomVIP.push(str);
+        localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP));
+        window.location.reload();
+    } else {
+        alert("Canceled");
+    }
 }
 
 
@@ -109,9 +114,10 @@ function loadDataRoom() {
 loadDataRoom();
 // Delete a room -------------------------------------------------
 function deleteRoom() {
+    // Normal room
     var arrayRoom = JSON.parse(localStorage.getItem('listRoom'));
-    var class_item = document.querySelectorAll('.normalRoom');
-    var class_trashCan = document.querySelectorAll('.fa-trash-can');
+    var class_item = document.querySelectorAll('.item');
+    var class_trashCan = document.querySelectorAll('.trashCan');
     for (let i = 0; i < class_trashCan.length; i++) {
         class_trashCan[i].addEventListener("click",function() {
             if (confirm("This action will be delete a room !!!")) {
@@ -124,18 +130,41 @@ function deleteRoom() {
                         alert('Delete successfully!');
                     }
                 }
-                console.log(arrayRoom);
             } else {
-                console.log("Canceled");
+                alert("Canceled");
             }
         })
     }
+
+    // Room VIP
+    var arrayRoomVIP = JSON.parse(localStorage.getItem('listRoomVIP'));
+    var class_item = document.querySelectorAll('.item');
+    var class_trashCan = document.querySelectorAll('.trashCanVIP');
+    for (let i = 0; i < class_trashCan.length; i++) {
+        class_trashCan[i].addEventListener("click",function() {
+            if (confirm("This action will be delete a room !!!")) {
+                for (let e = 0; e < arrayRoomVIP.length; e++) {
+                    if ( arrayRoomVIP[e] === arrayRoomVIP[i]) {
+                        class_item[i].remove();
+                        arrayRoomVIP.splice(e, 1); 
+                        localStorage.setItem('listRoomVIP',JSON.stringify(arrayRoomVIP));
+                        window.location.reload();
+                        alert('Delete successfully!');
+                    }
+                }
+            } else {
+                alert("Canceled");
+            }
+        })
+    }
+    
 }
 deleteRoom();
 
 //Edit room
 function editRoom() {
-    var class_edit = document.querySelectorAll('.fa-pen-to-square');
+    // Normal Room
+    var class_edit = document.querySelectorAll('.edit');
     for (let i = 0; i < class_edit.length; i++) {
         class_edit[i].onclick = function() {
             var noRoom = prompt('Enter number room:');
@@ -143,12 +172,11 @@ function editRoom() {
             var capacity = prompt('Capacity')
             var price = prompt('Price:')
             
-            room[i] = `<div class="item normalRoom">
+            room[i] = `<div class="item">
             <div class="title_room"> Room ${noRoom}</div>
             <div class="content">
-                <i class="fa-solid fa-trash-can"></i>
-                <i class="fa-solid fa-pen-to-square"></i>
-                
+                <i class="fa-solid fa-trash-can trashCan"></i>
+                <i class="fa-solid fa-pen-to-square edit"></i>
                 <img class="pic_content" src="./assets/image/pic_content.jpg">
                 <div class="info"">
                     <div class = "info1">Status: ${status}</div>
@@ -164,13 +192,36 @@ function editRoom() {
         window.location.reload();
         }
     }
-    
+    // VIP room
+    var class_edit = document.querySelectorAll('.editVIP');
+    for (let i = 0; i < class_edit.length; i++) {
+        class_edit[i].onclick = function() {
+            var noRoomVIP = prompt('Enter number room:');
+            var status = prompt('Status:');
+            var capacity = prompt('Capacity')
+            var price = prompt('Price:')
+            
+            roomVIP[i] = `<div class="item">
+            <div class="title_room"> Room VIP${noRoomVIP}</div>
+            <div class="content">
+                <i class="fa-solid fa-trash-can trashCanVIP"></i>
+                <i class="fa-solid fa-pen-to-square editVIP"></i>
+                <img class="pic_content" src="./assets/image/pic_content.jpg">
+                <div class="info"">
+                    <div class = "info1">Status: ${status}</div>
+                    <div class = "info2">Capacity: ${capacity} people</div>
+                    <div class = "info3">Price: ${price}$ an hour</div>
+                </div>
+                <a href="Order.html" target="_self" >
+                    <button class="btn">Order</button>
+                </a>
+            </div>
+        </div>`
+        localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP))
+        window.location.reload();
+        }
+    }
 }
 editRoom();
-// var arr = [1,2,3,4]
-// localStorage.setItem('array',JSON.stringify(arr))
-// arr[2] = 100;
-// localStorage.setItem('array',JSON.stringify(arr))
-// room[1] = 'touched';
-// console.log(room)
+
 
