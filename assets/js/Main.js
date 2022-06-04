@@ -1,95 +1,6 @@
 var id_contain = document.getElementById('contain');
 var id_containVIP = document.getElementById('containVIP');
 
-if ( localStorage.getItem('listRoom') === null ) {
-    var room = [];
-}else{
-    var room = JSON.parse(localStorage.getItem('listRoom'));
-}
-
-// ADD NORMAL ROOM ---------------------------------------------------------
-function addRoom() {
-    if (confirm("Create a new room, right!?")) {
-        var noRoom = prompt('Enter number room:');
-        var status = prompt('Status:');
-        var capacity = prompt('Capacity')
-        var price = prompt('Price:')
-        
-        const div = document.createElement('div');
-        div.innerHTML = `<div class="item">
-                            <div class="title_room"> Room ${noRoom}</div>
-                            <div class="content">
-                                <i class="fa-solid fa-trash-can trashCan"></i>
-                                <i class="fa-solid fa-pen-to-square edit"></i>
-                                <img class="pic_content" src="./assets/image/pic_content.jpg">
-                                <div class="info"">
-                                    <div class = "info1">Status: ${status}</div>
-                                    <div class = "info2">Capacity: ${capacity} people</div>
-                                    <div class = "info3">Price: ${price}$ an hour</div>
-                                </div>
-                                <a href="Order.html" target="_self" >
-                                    <button class="btn">Order</button>
-                                </a>
-                            </div>
-                        </div>`
-        // Press to show a room on screen
-        id_contain.appendChild(div);
-        // Save a room into localStorage
-        var str = div.innerHTML;
-        room.push(str);
-        localStorage.setItem('listRoom',JSON.stringify(room));
-        window.location.reload();
-    } else {
-        alert("Canceled");
-    }
-}
-
-
-// ADD VIP ROOM -----------------------------------------------------------
-if ( localStorage.getItem('listRoomVIP') === null ) {
-    var roomVIP = [];
-}else{
-    var roomVIP = JSON.parse(localStorage.getItem('listRoomVIP'));
-}
-
-function addRoomVIP() {
-    if (confirm("Create a new room, right!?")) {
-        var noRoomVIP = prompt('Enter number room:');
-        var status = prompt('Status:');
-        var capacity = prompt('Capacity')
-        var price = prompt('Price:')
-        
-        const div = document.createElement('div');
-        div.innerHTML = `<div class="item">
-                            <div class="title_room"> Room VIP ${noRoomVIP}</div>
-                            <div class="content">
-                                <i class="fa-solid fa-trash-can trashCanVIP"></i>
-                                <i class="fa-solid fa-pen-to-square editVIP"></i>
-                                <img class="pic_content" src="./assets/image/pic_content.jpg">
-                                <div class="info"">
-                                    <div class = "info1">Status: ${status}</div>
-                                    <div class = "info2">Capacity: ${capacity} people</div>
-                                    <div class = "info3">Price: ${price}$ an hour</div>
-                                </div>
-                                <a href="Order.html" target="_self" >
-                                    <button class="btn">Order</button>
-                                </a>
-                            </div>
-                        </div>`
-        // Press to show a room on screen
-        id_containVIP.appendChild(div);
-        // Save a room into localStorage
-        var str = '';
-        str = div.innerHTML;
-        roomVIP.push(str);
-        localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP));
-        window.location.reload();
-    } else {
-        alert("Canceled");
-    }
-}
-
-
 // LOAD DATA SAVED
 function loadDataRoom() {
     if (localStorage.getItem('listRoom') !== null) {
@@ -161,6 +72,17 @@ function deleteRoom() {
 }
 deleteRoom();
 
+function checkStatus(st) {
+    // var class_item = document.getElementById(id);
+    var sta = '';
+        if (st == "Unavailable" || st == "unavailable") {
+           return sta = 'class="item disable"';
+        }else{
+            sta = 'class="item"'
+        }
+    return sta;
+}
+
 //Edit room
 function editRoom() {
     // Normal Room
@@ -169,10 +91,10 @@ function editRoom() {
         class_edit[i].onclick = function() {
             var noRoom = prompt('Enter number room:');
             var status = prompt('Status:');
-            var capacity = prompt('Capacity')
-            var price = prompt('Price:')
+            var capacity = prompt('Capacity');
+            var price = prompt('Price:');
             
-            room[i] = `<div class="item">
+            room[i] = `<div ${checkStatus(status)} id="idRoom${noRoom}">
             <div class="title_room"> Room ${noRoom}</div>
             <div class="content">
                 <i class="fa-solid fa-trash-can trashCan"></i>
@@ -188,6 +110,7 @@ function editRoom() {
                 </a>
             </div>
         </div>`
+    
         localStorage.setItem('listRoom',JSON.stringify(room))
         window.location.reload();
         }
@@ -223,5 +146,4 @@ function editRoom() {
     }
 }
 editRoom();
-
 

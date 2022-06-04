@@ -305,4 +305,6 @@ body {
     visibility: visible;
 }
 /* -------------------------------------- */
-
+.disable {
+    opacity: 0.5;
+}
