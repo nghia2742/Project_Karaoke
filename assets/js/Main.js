@@ -124,7 +124,7 @@ function editRoom() {
             var capacity = prompt('Capacity')
             var price = prompt('Price:')
             
-            roomVIP[i] = `<div class="item">
+            roomVIP[i] = `<div ${checkStatus(status)} id="idRoomVIP${noRoomVIP}>
             <div class="title_room"> Room VIP${noRoomVIP}</div>
             <div class="content">
                 <i class="fa-solid fa-trash-can trashCanVIP"></i>
