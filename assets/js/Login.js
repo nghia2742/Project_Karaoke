@@ -12,7 +12,10 @@ function check(){
 }
 
 function myFunction(){
-    if(document.myForm.uname.value == ac && document.myForm.password.value == pass){
+    var id_inp = document.getElementById('inp').value;
+    var id_pas = document.getElementById('pas').value;
+
+    if(id_inp == ac && id_pas == pass){
         return true;
     }
     return false;

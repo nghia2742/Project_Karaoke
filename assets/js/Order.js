@@ -1,5 +1,4 @@
 function checkStatus(st) {
-    // var class_item = document.getElementById(id);
     var sta = '';
         if (st == "Unavailable" || st == "unavailable") {
            return sta = 'class="item disable"';
@@ -27,9 +26,11 @@ function addRoom() {
     else{
         const div = document.createElement('div');
         div.innerHTML = `<div ${checkStatus(stat)} id="idRoom${noRoom}">
-                            <div class="title_room"> Room ${noRoom}</div>
+                            <div class="title_room">${noRoom}</div>
                             <div class="content">
+                                <a href="viewroom.php">
                                 <i class="fa-solid fa-trash-can trashCan"></i>
+                                </a>
                                 <i class="fa-solid fa-pen-to-square edit"></i>
                                 <img class="pic_content" src="./assets/image/pic_content.jpg">
                                 <div class="info"">
@@ -37,7 +38,7 @@ function addRoom() {
                                     <div class = "info2">Capacity: ${capacity} people</div>
                                     <div class = "info3">Price: ${price}$ an hour</div>
                                 </div>
-                                <a href="Order.html" target="_self" >
+                                <a href="./Order.php" target="_self" >
                                     <button class="btn">Order</button>
                                 </a>
                             </div>
@@ -63,11 +64,17 @@ function addRoomVIP() {
     var capacity = document.getElementById('capacityRoom').value;
     var price = document.getElementById('priceRoom').value;
     
+    if (noRoomVIP == "" || stat == "" || capacity == "" || price == "") {
+        alert("Can't add");
+    }
+    else{
         const div = document.createElement('div');
         div.innerHTML = `<div ${checkStatus(stat)} id="idRoomVIP${noRoomVIP}">
-                            <div class="title_room"> Room VIP ${noRoomVIP}</div>
+                            <div class="title_room">${noRoomVIP}</div>
                             <div class="content">
-                                <i class="fa-solid fa-trash-can trashCanVIP"></i>
+                            <a href="viewroom.php">
+                            <i class="fa-solid fa-trash-can trashCanVIP"></i>
+                            </a>
                                 <i class="fa-solid fa-pen-to-square editVIP"></i>
                                 <img class="pic_content" src="./assets/image/pic_content.jpg">
                                 <div class="info"">
@@ -75,19 +82,19 @@ function addRoomVIP() {
                                     <div class = "info2">Capacity: ${capacity} people</div>
                                     <div class = "info3">Price: ${price}$ an hour</div>
                                 </div>
-                                <a href="Order.html" target="_self" >
+                                <a href="./Order.php" target="_self" >
                                     <button class="btn">Order</button>
                                 </a>
                             </div>
                         </div>`
-        // Press to show a room on screen
-        // id_containVIP.appendChild(div);
+
         // Save a room into localStorage
         var str = '';
         str = div.innerHTML;
         roomVIP.push(str);
         localStorage.setItem('listRoomVIP',JSON.stringify(roomVIP));
         window.location.reload();
+    }
 }
 
 

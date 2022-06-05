@@ -31,19 +31,17 @@ function deleteRoom() {
     var class_trashCan = document.querySelectorAll('.trashCan');
     for (let i = 0; i < class_trashCan.length; i++) {
         class_trashCan[i].addEventListener("click",function() {
-            if (confirm("This action will be delete a room !!!")) {
+           
                 for (let e = 0; e < arrayRoom.length; e++) {
                     if ( arrayRoom[e] === arrayRoom[i]) {
                         class_item[i].remove();
                         arrayRoom.splice(e, 1); 
                         localStorage.setItem('listRoom',JSON.stringify(arrayRoom));
                         window.location.reload();
-                        alert('Delete successfully!');
+                        
                     }
                 }
-            } else {
-                alert("Canceled");
-            }
+            
         })
     }
 
@@ -53,19 +51,17 @@ function deleteRoom() {
     var class_trashCan = document.querySelectorAll('.trashCanVIP');
     for (let i = 0; i < class_trashCan.length; i++) {
         class_trashCan[i].addEventListener("click",function() {
-            if (confirm("This action will be delete a room !!!")) {
+            
                 for (let e = 0; e < arrayRoomVIP.length; e++) {
                     if ( arrayRoomVIP[e] === arrayRoomVIP[i]) {
                         class_item[i].remove();
                         arrayRoomVIP.splice(e, 1); 
                         localStorage.setItem('listRoomVIP',JSON.stringify(arrayRoomVIP));
                         window.location.reload();
-                        alert('Delete successfully!');
+                        
                     }
                 }
-            } else {
-                alert("Canceled");
-            }
+
         })
     }
     
@@ -95,7 +91,7 @@ function editRoom() {
             var price = prompt('Price:');
             
             room[i] = `<div ${checkStatus(status)} id="idRoom${noRoom}">
-            <div class="title_room"> Room ${noRoom}</div>
+            <div class="title_room">${noRoom}</div>
             <div class="content">
                 <i class="fa-solid fa-trash-can trashCan"></i>
                 <i class="fa-solid fa-pen-to-square edit"></i>
@@ -105,7 +101,7 @@ function editRoom() {
                     <div class = "info2">Capacity: ${capacity} people</div>
                     <div class = "info3">Price: ${price}$ an hour</div>
                 </div>
-                <a href="Order.html" target="_self" >
+                <a href="Order.php" target="_self" >
                     <button class="btn">Order</button>
                 </a>
             </div>
@@ -124,8 +120,8 @@ function editRoom() {
             var capacity = prompt('Capacity')
             var price = prompt('Price:')
             
-            roomVIP[i] = `<div ${checkStatus(status)} id="idRoomVIP${noRoomVIP}>
-            <div class="title_room"> Room VIP${noRoomVIP}</div>
+            roomVIP[i] = `<div ${checkStatus(status)} id="idRoomVIP${noRoomVIP}">
+            <div class="title_room">${noRoomVIP}</div>
             <div class="content">
                 <i class="fa-solid fa-trash-can trashCanVIP"></i>
                 <i class="fa-solid fa-pen-to-square editVIP"></i>
@@ -135,7 +131,7 @@ function editRoom() {
                     <div class = "info2">Capacity: ${capacity} people</div>
                     <div class = "info3">Price: ${price}$ an hour</div>
                 </div>
-                <a href="Order.html" target="_self" >
+                <a href="Order.php" target="_self" >
                     <button class="btn">Order</button>
                 </a>
             </div>
